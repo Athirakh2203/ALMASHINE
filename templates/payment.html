@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Page</title>
+    <style>
+        /* Center the form on the page */
+        body {
+            background-image: url("{% static 'images/d6.jpg' %}");
+            font-family: Arial, sans-serif;
+            background-color: rgba(255, 255, 255, 0.8); 
+            background-size: cover;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Style the form to be transparent */
+        .payment-form {
+            background-color: rgba(0, 0, 0, 0.5);  /* Transparent black background */
+            padding: 30px;
+            border-radius: 10px;
+            width: 450px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .payment-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: maroon;
+            
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group input, .form-group select {
+            width: 380px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            
+        }
+
+        .form-group input[type="submit"] {
+            background-color: violet;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .form-group input[type="submit"]:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<div class="payment-form">
+    <h2>Payment Information</h2>
+    <form action="{% url 'thank_you' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <input type="text" id="card_name" name="card_name" placeholder="Name on Card" required>
+        </div>
+        <div class="form-group">
+            <input type="text" id="card_number" name="card_number" maxlength="16" placeholder="Card Number" required>
+        </div>
+        <div class="form-group">
+            <input type="month" id="expiry_date" name="expiry_date" placeholder="Expiry Date" required>
+        </div>
+        <div class="form-group">
+            <input type="text" id="cvc" name="cvc" maxlength="4" placeholder="CVC/CVV" required>
+        </div>
+        <div class="form-group">
+            <select id="country" name="country" required>
+                <option value="">Select Country</option>
+                <option value="USA">USA</option>
+                <option value="UK">UK</option>
+                <option value="Canada">Canada</option>
+                <option value="India">India</option>
+                <!-- Add more countries as needed -->
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="number" id="amount" name="amount" placeholder="Amount" required>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Proceed to Pay">
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

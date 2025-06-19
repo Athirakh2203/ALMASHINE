@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Listings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('path/to/your/background.jpg'); /* Replace with your background image path */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #ffffff;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #008080; /* Transparent background */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffdb4d;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .job-post {
+            background: rgba(255, 255, 255, 0.2); /* Slightly transparent for job posts */
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            color: #DAA520;
+        }
+
+        .job-post h2 {
+            margin: 0 0 10px 0;
+            color: #8B008B;
+        }
+
+        .job-post p {
+            margin: 5px 0;
+        }
+
+        .job-post img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button-container a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #C71585;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button-container a:hover {
+            background-color: #0056b3;
+        }
+
+        .link a {
+            color: #A0522D;
+            text-decoration: none;
+            
+        }
+
+        .link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Job Listings</h1>
+        {% if jobs %}
+            {% for job in jobs %}
+                <div class="job-post">
+                    <h2>{{ job.job_title }}</h2>
+                    {% if job.company_image %}
+                        <img src="{{ job.company_image.url }}" alt="Company Image">
+                    {% else %}
+                        <p>No image available</p>
+                    {% endif %}
+                    <p><strong>Description:</strong> {{ job.description }}</p>
+                    <p><strong>Company:</strong> {{ job.company }}</p>
+                    <p><strong>Location:</strong> {{ job.place|default:"Not Specified" }}</p>
+                    <p><strong>Last Date to Apply:</strong> {{ job.last_date }}</p>
+                    <p><strong>Company Website:</strong> <a href="{{ job.company_website }}">{{ job.company_website }}</a></p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No job postings available.</p>
+        {% endif %}
+
+        <div class="button-container">
+            <a href="{% url 'job_post' %}">Post a Job</a> <!-- Adjust 'job_post' to your URL name for job posting -->
+        </div>
+    </div>
+</body>
+</html>

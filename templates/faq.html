@@ -1,0 +1,38 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+    <style>
+        body {
+            background-image: url("{% static 'images/background.jpg' %}");  /* Replace with your desired background image */
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .message-box {
+            background: rgba(0, 0, 0, 0.6);  /* Transparent black background */
+            color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 24px;
+        }
+    </style>
+
+    {% if user.is_authenticated %}
+        <!-- If the user is logged in, show content -->
+        <div class="message-box">
+            <p>Welcome, {{ user.username }}! You have access to the features.</p>
+        </div>
+    {% else %}
+        <!-- If the user is NOT logged in, show the login message -->
+        <div class="message-box">
+            <p>Only logged-in users can use the features. Please log in to continue.</p>
+        </div>
+    {% endif %}
+{% endblock %}

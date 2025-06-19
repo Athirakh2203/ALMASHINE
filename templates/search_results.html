@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni for Pass-out Year</title>
+    <style>
+        body {
+            background-image: url('path/to/your/background.jpg'); /* Replace with actual path */
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .container {
+            background-color: rgba(255, 255, 255, 0.1); /* Transparent background */
+            border-radius: 10px;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        h1 {
+            color: pink;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: purple;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        img {
+            border-radius: 50%; /* Makes the image circular */
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        .details {
+            color: #ffeb99;
+        }
+
+        .details p {
+            margin: 5px 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Alumni for Pass-out Year: {{ year|default:"N/A" }}</h1>
+        {% if alumni_list %}
+            <ul>
+                {% for alumni in alumni_list %}
+                    <li>
+                        <img src="{{ alumni.image.url }}" alt="{{ alumni.name }}">
+                        <div class="details">
+                            <p>Name: {{ alumni.name }}</p>
+                            <p>Pass-out Year: {{ alumni.year_of_passout }}</p>
+                            <p>College: {{ alumni.college }}</p>
+                            <p>Course: {{ alumni.course }}</p>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No alumni found for this pass-out year.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!-- message_list.html -->
+ <html>
+    <head>
+    </head>
+    <style>
+        /* message.css */
+.chat-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.messages {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.message {
+    max-width: 70%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.message.sent {
+    background-color: #dcf8c6;
+    align-self: flex-end;
+    text-align: right;
+}
+
+.message.received {
+    background-color: #fff;
+    align-self: flex-start;
+    text-align: left;
+}
+
+.message span {
+    display: block;
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 5px;
+}
+
+.message-form {
+    display: flex;
+    margin-top: 10px;
+}
+
+.message-form input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+
+.message-form button {
+    background-color: #25d366;
+    color: white;
+    padding: 10px 15px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.message-form button:hover {
+    background-color: #128c7e;
+}
+</style>
+<!-- message_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Messages with {{ receiver.username }}</title>
+</head>
+<body>
+    <h1>Messages with {{ receiver.username }}</h1>
+    <div class="messages">
+        {% for message in messages %}
+            <p><strong>{{ message.sender.username }}:</strong> {{ message.content }} <em>{{ message.timestamp }}</em></p>
+        {% endfor %}
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        <textarea name="message" placeholder="Type your message"></textarea>
+        <button type="submit">Send</button>
+    </form>
+
+    <a href="{% url 'user_list' %}">Back to user list</a>
+</body>
+</html>
+

@@ -1,0 +1,497 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+       
+
+
+        <title>ALMASHINE</title>
+
+        <!-- CSS FILES -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/bootstrap-icons.css' %}" rel="stylesheet">
+
+        <link rel="stylesheet" href="{% static 'css/slick.css' %}"/>
+
+        <link href="{% static 'css/tooplate-little-fashion.css' %}" rel="stylesheet">
+<!--
+ 
+Tooplate 2127 Little Fashion
+
+https://www.tooplate.com/view/2127-little-fashion
+
+-->
+    </head>
+    <style>
+        body {
+            font-family: 'Algerian', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        /* Background Video */
+        .background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        #video-background {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        h1 {
+            color: blue;
+        }
+        .events-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        .event {
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #fff;
+            cursor: pointer;
+        }
+        .event img {
+            width: 300px;
+            height: 200px;
+            
+        }
+        .event h2 {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+          }
+      
+          .gallery img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease-in-out;
+          }
+      
+          .gallery img:hover {
+            transform: scale(1.1);
+          }
+      
+          @media (max-width: 768px) {
+            .gallery img {
+              width: 45%;
+            }
+          }
+      
+          @media (max-width: 480px) {
+            .gallery img {
+              width: 100%;
+            }
+          }
+
+    
+            .search-container {
+                display: flex;
+                align-items: center;
+                margin-top: 20px;
+                color: #A5B68D;
+                height:40px;
+            
+            }
+        
+            .search-input {
+                width: 100px;
+                height:40px;
+                color: #A5B68D;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 20px 0 0 20px;
+                outline: none;
+            }
+        
+            .search-button {
+                padding: 10px 15px;
+                background-color:#CB9DF0 ; /* Change color as you like */
+                color: #A5B68D;
+                border: none;
+                border-radius: 0 20px 20px 0;
+                cursor: pointer;
+                height:40px;
+                width:40px;
+            
+            }
+        
+            .search-button:hover {
+                background-color: #493628;
+                width:10px;
+
+            }
+        
+            .search-icon {
+                font-size: 16px;
+                vertical-align: middle;
+                color:green;
+                width:10px;
+            }
+            .navbar-brand{
+                color:green;
+            }
+            .nav-link {
+                color:maroon;
+                
+            }
+            
+            
+    </style>
+    
+    <body>
+        
+        
+
+        <section class="preloader">
+            <div class="spinner">
+                <span class="sk-inner-circle"></span>
+            </div>
+        </section>
+    
+        <main>
+
+            <nav class="navbar navbar-expand-lg">
+                
+                    <div class="logo"><a href="index"><img src="{% static 'images/logo1.png' %}" height="80px" weight="60px" alt="#"</a></div>
+
+                    <a class="navbar-brand" href="index.html">
+                        <strong><span style="color: #2E4E3F;">ALMA</span><span style="color: #B22222;">SHINE</span></strong>
+                    </a>
+                    
+
+                    
+
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item">
+                                <a class="nav-link active " href="">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#about">About</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#events">Event</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link"  href="{% url 'job_list' %}">Job Portal</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#memory">Gallery</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link"  href="{% url 'donate' %}">Donation</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link"  href="{% url 'reviews' %}">Reviews</a>
+                            </li>
+                        </ul>
+                        <div class="search-container">
+                            <form method="GET" action="{% url 'search_alumni' %}" style="display: flex;">
+                                <input type="number" name="year" class="search-input" placeholder="Enter Year" required>
+                                <button type="submit" class="search-button">
+                                    <span class="search-icon">🔍</span> <!-- Use a Unicode search icon -->
+                                </button>
+                        
+
+                        <div class="d-none d-lg-block">
+                            <a href="logout.html" class="bi-person custom-icon me-3"></a>
+
+                            
+                            <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="{% url 'Logout' %}" 
+                            style="background-color: #6f42c1; color: white; font-size: 18px; padding: 12px 18px; border-radius: 8px;">
+                             LOGOUT
+                         </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <section class="slick-slideshow">   
+                <div class="slick-custom">
+                    <img src="{% static 'images/slideshow/bg3.png' %}" class="img-fluid" alt="">
+
+                    <div class="slick-bottom">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-6 col-10">
+                                    <h1 class="slick-title"></h1>
+
+                                    <p class="lead text-white mt-lg-3 mb-lg-5">Stay Connected,Stay Inspired,Stay Alumini.This Is The Platform For Connecting Past,Present and Your Beautiful Future</p>
+
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slick-custom">
+                    <img src="{% static 'images/slideshow/bg2.png' %}" class="img-fluid" alt="">
+
+                    <div class="slick-bottom">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-6 col-10">
+                                    
+
+                                    <p class="lead text-white mt-lg-3 mb-lg-5">The Connection You Made Here ,Opened Doors To New Opportunities</p>
+
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="background-video">
+                    <video autoplay muted loop id="video-background">
+                        <source src="{% static 'images/video/video3.mp4' %}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+
+                
+
+                   
+            </section>
+
+            <section class="about section-padding">
+                <div class="container">
+                    <div class="row">
+
+                        <!--  Start -->
+    <div class="container-fluid py-5">
+        <div id="about">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-5">
+                    <img class="img-fluid rounded mb-4 mb-lg-0" src="{% static 'images/about.jpg' %}" alt="">
+                </div>
+                <div class="col-lg-7">
+                    <div class="text-left mb-4">
+                        <h5 class="text-uppercase mb-3" style="letter-spacing: 5px; color: maroon !important;">
+                            About Us
+                        </h5>
+                        
+    
+                    </div>
+                    <p>an innovative and purpose-  driven platform that aims to establish and nurture a strong bond between our  esteemed educational institution and its esteemed alumni community. With a  vision to create a thriving ecosystem for graduates, this system offers a seamless  and user-friendly interface, empowering our alumni to remain connected, share  their achievements, and actively participate in the college's continued growth  and success</p>
+                    <a href="{% url 'about'%}" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2"
+                    style="background-color: #6f42c1; color: white; font-size: 18px; padding: 12px 18px; border-radius: 8px;">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>University Event</title>
+        
+    </head>
+    <body>
+        <h4 class="text-uppercase mb-3" style="letter-spacing: 5px; color: maroon !important;">
+            UNIVERSITY EVENTS
+        </h4>
+        <div id="events">
+    <div class="gallery">
+        <div class="event" onclick="window.location.href='{% url 'events1'  %}'">
+            <img src="{% static 'images/events1.png' %}" alt="Event 1">
+            <h2>VYVIDH</h2>
+        </div>
+        <div class="event" onclick="window.location.href='{% url 'events2'  %}'">
+            <img src="{% static 'images/events2.jpg' %}" alt="Event 2">
+            <h2>TECTALGIA</h2>
+        </div>
+        <div class="event" onclick="window.location.href='{% url 'event3'  %}'">
+            <img src="{% static 'images/events3.jpg' %}" alt="Event 3">
+            <h2>THEJOMAYAM</h2>
+        </div>
+        <div class="event" onclick="window.location.href='{% url 'event4'  %}'">
+            <img src="{% static 'images/events4.jpg' %}" alt="Event 4">
+            <h2>AARAV</h2>
+        </div>
+        <div class="event" onclick="window.location.href='{% url 'event5'  %}'">
+            <img src="{% static 'images/events5.jpg' %}" alt="Event 5">
+            <h2>DHANAK</h2>
+        </div>
+        <div class="event" onclick="window.location.href='{% url 'event6'  %}'">
+            <img src="{% static 'images/events6.jpg' %}" alt="Event 6">
+            <h2>THARANG</h2>
+        </div>
+       
+    </div>
+        
+
+   
+
+           
+
+                        
+
+            <section class="featured-product section-padding">
+                <div class="container">
+                    <div class="row">
+                        
+                        <div class="col-12 text-center">
+                            <!DOCTYPE html>
+
+                            <h4 class="text-uppercase mb-3" style="letter-spacing: 5px; color: maroon !important;">
+                                MEMORIES
+                            </h4>
+    <div id="memory">
+
+    <div class="gallery">
+        
+        <!-- Meetup 1 -->
+        <div class="meetup">
+            <img src="{% static 'images/al1.jpg' %}" alt="Alumni Meetup 1">
+           
+        </div>
+
+        <!-- Meetup 2 -->
+        <div class="meetup">
+            <img src="{% static 'images/al2.jpg' %}" alt="Alumni Meetup 2">
+            
+        </div>
+
+        <!-- Meetup 3 -->
+        <div class="meetup">
+            <img src="{% static 'images/al3.jpg' %}" alt="Alumni Meetup 3">
+            
+        </div>
+
+        <!-- Meetup 4 -->
+        <div class="meetup">
+            <img src="{% static 'images/al4.jpg' %}" alt="Alumni Meetup 4">
+           
+        </div>
+
+        <!-- Meetup 5 -->
+        <div class="meetup">
+            <img src="{% static 'images/al5.jpg' %}" alt="Alumni Meetup 5">
+           
+        </div>
+        <div class="meetup">
+            <img src="{% static 'images/al6.jpg' %}" alt="Alumni Meetup 5">
+           
+        </div>
+        <div class="meetup">
+            <img src="{% static 'images/al7.jpg' %}" alt="Alumni Meetup 5">
+           
+        </div>
+        <div class="meetup">
+            <img src="{% static 'images/al8.jpg' %}" alt="Alumni Meetup 5">
+           
+        </div>
+        <div class="meetup">
+            <img src="{% static 'images/al9.jpg' %}" alt="Alumni Meetup 5">
+           
+        </div>
+    </div>
+
+</body>
+</html>
+
+
+            </section>
+
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-10 me-auto mb-4">
+                        <h4 class="text-white mb-3"><a href="index.html"></a>Almashine</h4>
+                        <p class="copyright-text text-muted mt-lg-5 mb-4 mb-lg-0">Copyright © 2024 <strong>Alma Shine</strong></p>
+                        <br>
+                        <p class="copyright-text">Designed by <a href="https://www.tooplate.com/" target="_blank">Tooplate</a></p>
+                    </div>
+
+                    <div class="col-lg-5 col-8">
+                        <h5 class="text-white mb-3">Sitemap</h5>
+
+                        <ul class="footer-menu d-flex flex-wrap">
+                            <li class="footer-menu-item"><a href="about.html" class="footer-menu-link">Home</a></li>
+
+                            <li class="footer-menu-item"><a href="#about" class="footer-menu-link">About</a></li>
+
+                            <li class="footer-menu-item"><a href="#events" class="footer-menu-link">Event</a></li>
+
+                            <li class="footer-menu-item"><a href="#job" class="footer-menu-link">Job Portal</a></li>
+
+                            <li class="footer-menu-item"><a href="#memory" class="footer-menu-link">Gallery</a></li>
+                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Donation</a></li>
+                        
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-4">
+                        <h5 class="text-white mb-3">Social</h5>
+
+                        <ul class="social-icon">
+
+                            <li><a href="#" class="social-icon-link bi-youtube"></a></li>
+
+                            <li><a href="#" class="social-icon-link bi-whatsapp"></a></li>
+
+                            <li><a href="#" class="social-icon-link bi-instagram"></a></li>
+
+                            <li><a href="#" class="social-icon-link bi-skype"></a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'js/Headroom.js' %}"></script>
+        <script src="{% static 'js/jQuery.headroom.js' %}"></script>
+        <script src="{% static 'js/slick.min.js' %}"></script>
+        <script src="{% static 'js/custom.js' %}"></script>
+
+    </body>
+</html>

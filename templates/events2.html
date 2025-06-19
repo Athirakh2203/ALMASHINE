@@ -1,0 +1,160 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TECTALGIA</title>
+    <style>
+      /* General reset */
+      * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+      }
+
+      /* Body and font styling */
+      body {
+          font-family: 'Algerian', sans-serif;
+          background-color: #f9f9f9;
+          color: #333;
+          padding: 20px;
+          line-height: 1.6;
+          position: relative; /* Allow content to be on top of the video */
+          z-index: 1; /* Ensure content appears above the video */
+      }
+
+      /* Background Video */
+      .background-video {
+          position: fixed; /* Make video fixed in place */
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1; /* Place the video behind content */
+      }
+
+      #video-background {
+          object-fit: cover; /* Ensure video covers the entire background */
+          width: 100%;
+          height: 100%;
+      }
+
+      /* Content Styling */
+      h1 {
+          text-align: center;
+          font-size: 3em;
+          font-weight: bold;
+          margin-bottom: 30px;
+          color: maroon;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Event details styling */
+      .event-details {
+          background-color: violet;
+          padding: 30px;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          margin-bottom: 30px;
+      }
+
+      .event-details p {
+          font-size: 1.2em;
+          margin-bottom: 20px;
+          text-align: justify;
+      }
+
+      /* Gallery Section */
+      .gallery {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 15px;
+          margin-top: 20px;
+      }
+
+      .gallery img {
+          width: 300px;
+          height: 200px;
+          object-fit: cover;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          transition: transform 0.3s ease-in-out;
+      }
+
+      .gallery img:hover {
+          transform: scale(1.1);
+      }
+
+      /* Button Styling */
+      button {
+          display: block;
+          margin: 20px auto;
+          padding: 12px 30px;
+          background-color: #007bff;
+          color: white;
+          border: none;
+          font-size: 1.1em;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s;
+      }
+
+      button:hover {
+          background-color: #0056b3;
+      }
+
+      /* Responsive design */
+      @media (max-width: 768px) {
+          .gallery img {
+              width: 45%;
+          }
+      }
+
+      @media (max-width: 480px) {
+          .gallery img {
+              width: 100%;
+          }
+      }
+    </style>
+</head>
+<body>
+
+    <!-- Background Video -->
+    <div class="background-video">
+        <video autoplay muted loop id="video-background">
+            <source src="{% static 'images/video/video7.mp4' %}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <h1>TECTALGIA</h1>
+
+    <div class="event-details">
+        <p>TECTALGIA is a global online arts and literary festival organized by the alumni of 
+            Government Engineering College (GEC) Thrissur: 
+            <br>
+            TECTALGIA-I: The first TECTALGIA was conducted in March 2021 in two parts. 
+            <br>
+            TECTALGIA-2: TECTALGIA-2 was a global online festival of talent show. 
+            <br>
+            The GECT Global Alumni presented TECTALGIA-2 FB and YouTube Live on January 1, 2022. 
+            <br>
+            GEC Thrissur is a prestigious technical education institution in south India. 
+            It was established in 1957 and is affiliated to the University of Calicut. 
+            The college offers undergraduate programs in Civil, Mechanical, and Electrical 
+            engineering.
+        </p>
+    </div>
+
+    <!-- Gallery Section -->
+    <div class="gallery">
+        <img src="{% static 'images/t1.jpeg' %}" alt="Image 1">
+        <img src="{% static 'images/t2.jpeg' %}" alt="Image 2">
+        <img src="{% static 'images/t3.jpeg' %}" alt="Image 3">
+        <img src="{% static 'images/t4.jpeg' %}" alt="Image 4">
+    </div>
+
+</body>
+</html>

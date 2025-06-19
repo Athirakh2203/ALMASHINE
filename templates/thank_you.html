@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Donation Receipt</title>
+    <style>
+        body, html {
+            background-image: url("{% static 'images/d4.jpg' %}");
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+        .receipt {
+            border: 1px solid #ddd;
+            padding: 20px;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+        .receipt h2 {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="receipt">
+        <h2>Thank You for Your Donation!</h2>
+        <p>Your donation of <strong>${{ donation_amount }}</strong> was successful.</p>
+        <p>We greatly appreciate your support!</p>
+        <p>Donation Reference: {{ donation_amount }}</p> <!-- Example unique reference -->
+    </div>
+</body>
+</html>

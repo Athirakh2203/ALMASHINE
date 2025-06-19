@@ -1,0 +1,148 @@
+{% load static %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Alumni Management</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <style>
+        /* Apply Algerian font to the entire page */
+        body {
+            font-family: 'Algerian', sans-serif; /* Use Algerian font */
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        /* Container for the entire page */
+        .about-us-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header Section */
+        .about-header {
+            text-align: center;
+            margin-bottom: 30px;
+            background-color: #808000;
+            padding: 20px;
+            color: white;
+            border-radius: 10px;
+        }
+
+        .about-header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .about-header p {
+            font-size: 18px;
+            font-weight: 300;
+        }
+
+        /* Mission Section */
+        .mission-section h2,
+        .team-section h2,
+        .values-section h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .mission-section p,
+        .values-section li,
+        .member-info p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* Team Section */
+        .team-member {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            
+        }
+
+        .team-member img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        .member-info h3 {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        /* Footer Section */
+        .about-footer {
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+            padding: 20px;
+            background-color: #f1f1f1;
+            border-radius: 10px;
+        }
+    </style>
+    
+    <div class="about-us-container">
+        <header class="about-header">
+            <h1>Welcome to Our Alumni Management System</h1>
+            <p>Connecting Alumni, Building a Stronger Community</p>
+        </header>
+
+        <section class="mission-section">
+            <h2>Our Mission</h2>
+            <p>Our mission is to foster a strong, supportive network for alumni from various educational backgrounds. We aim to provide a platform where alumni can connect, network, share opportunities, and support each other in their professional and personal lives.</p>
+        </section>
+
+        <section class="team-section">
+            <h2>Our Team</h2>
+            <div class="team-member">
+                <img src="{% static 'images/ap21.jpg' %}" alt="Team Member 1">
+                <div class="member-info">
+                    <h3>ATHIRA</h3>
+                    <p>Founder & CEO</p>
+                    <p>ATHIRA is passionate about creating connections between alumni and helping individuals grow through shared knowledge and opportunities.</p>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="{% static 'images/ap12.jpg' %}" alt="Team Member 2">
+                <div class="member-info">
+                    <h3>NAYRA</h3>
+                    <p>Community Manager</p>
+                    <p>NAYRA is dedicated to enhancing the alumni experience, ensuring that every member feels engaged and supported.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="values-section">
+            <h2>Our Values</h2>
+            <ul>
+                <li><strong>Community:</strong> We believe in building a connected and supportive alumni network.</li>
+                <li><strong>Integrity:</strong> We operate with transparency and honesty in all our interactions.</li>
+                <li><strong>Empowerment:</strong> We strive to empower alumni by providing tools for success and growth.</li>
+                <li><strong>Collaboration:</strong> We value collaboration between alumni, institutions, and the wider community.</li>
+            </ul>
+        </section>
+
+        <footer class="about-footer">
+            <p>&copy; 2024 Alumni Management. All Rights Reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

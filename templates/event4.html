@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AARAV 2K21</title>
+    <style>
+        /* General reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Body and font styling */
+        body {
+            font-family: 'Algerian', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+            line-height: 1.7;
+            position: relative; /* Allow background video to be placed behind content */
+            z-index: 1;
+        }
+
+        /* Background Video */
+        .background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* Ensure the video stays behind the content */
+        }
+
+        /* Heading styles */
+        h1 {
+            text-align: center;
+            font-size: 4em;
+            font-weight: bold; /* Make only the heading bold */
+            margin-bottom: 30px;
+            color: #ff6f61;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+            text-transform: uppercase;
+        }
+
+        /* Event details section styling */
+        .event-details {
+            background-color: maroon; /* Semi-transparent background for text readability */
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .event-details p {
+            font-size: 1.3em;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            text-align: justify;
+            color: white;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .gallery img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .gallery img {
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery img {
+                width: 100%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Background Video -->
+    <video autoplay muted loop class="background-video">
+        <source src="{% static 'images/video/video8.mp4' %}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <h1>AARAV 2K21</h1>
+
+    <div class="event-details">
+        <p>The most awaited event is here? No more days to wait... just a few hours... 
+           *****AARAV 2K21***** A Two-day Campus Arts Fest, Competitions between four different 
+           houses on 22nd and 23rd of December 2021 at NCERC, Pampady.
+
+           To know more, please click the link below:
+           <br><br>
+           <a href="https://ncerc.ac.in/news/323" target="_blank">Event Details - AARAV 2K21</a>
+        </p>
+    </div>
+
+    <!-- Gallery Section -->
+    <div class="gallery">
+        <img src="{% static 'images/e41.jpg' %}" alt="Image 1">
+        <img src="{% static 'images/e42.jpg' %}" alt="Image 2">
+        <img src="{% static 'images/e43.jpg' %}" alt="Image 3">
+        <img src="{% static 'images/e44.jpg' %}" alt="Image 4">
+    </div>
+
+</body>
+</html>

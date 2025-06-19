@@ -1,0 +1,104 @@
+<!-- templates/home.html -->
+
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index1 Page</title>
+    <style>
+        /* Styles for the popup message */
+        .popup {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(0, 0, 0, 0.5); 
+        }
+
+        .popup-content {
+            background-color: #fff;
+            margin: 15% auto; 
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px; 
+            text-align: center;
+        }
+
+        .close {
+            cursor: pointer;
+            color: #aaa;
+            float: right;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+
+    <img src= "{% static 'images/homes.png' %}" width=1300 height=580 alt="">
+
+
+<!-- The Popup -->
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <span class="close" id="closePopupBtn">&times;</span>
+        <p>Do you want to log out?</p>
+        <button id="logoutBtn">Yes, Log Out</button>
+        <button id="cancelBtn">Cancel</button>
+    </div>
+</div>
+
+<script>
+    // Get the popup
+    var popup = document.getElementById("popup");
+
+    // Automatically show the popup after loading the page
+    window.onload = function() {
+        popup.style.display = "block";
+    };
+
+    // Get the <span> element that closes the popup
+    var closePopupBtn = document.getElementById("closePopupBtn");
+    var cancelBtn = document.getElementById("cancelBtn");
+    var logoutBtn = document.getElementById("logoutBtn");
+
+    // When the user clicks on <span> (x) or cancel button, close the popup
+    closePopupBtn.onclick = function() {
+        window.location.href="{% url 'index1' %}";
+    }
+    
+    cancelBtn.onclick = function() {
+        window.location.href="{% url 'index1' %}";
+    }
+
+    // When the user clicks the logout button
+    logoutBtn.onclick = function() {
+        // Redirect to logout URL (you need to set this up in your urls.py)
+        window.location.href = "{% url 'index' %}"; // Replace 'logout' with your logout URL name
+    }
+    
+
+    // When the user clicks anywhere outside of the popup, close it
+    window.onclick = function(event) {
+        if (event.target == popup) {
+            popup.style.display = "none";
+        }
+    }
+</script>
+
+</body>
+</html>
+{% endblock %}

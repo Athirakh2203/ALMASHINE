@@ -1,0 +1,157 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TECTALGIA</title>
+    <style>
+      /* General reset */
+      * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+      }
+
+      /* Body and font styling */
+      body {
+          font-family: 'Algerian', sans-serif;
+          background-color: #f9f9f9;
+          color: #333;
+          padding: 20px;
+          line-height: 1.6;
+          position: relative; /* Allow content to be on top of the video */
+          z-index: 1; /* Ensure content appears above the video */
+      }
+
+      /* Background Video */
+      .background-video {
+          position: fixed; /* Make video fixed in place */
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1; /* Place the video behind content */
+      }
+
+      #video-background {
+          object-fit: cover; /* Ensure video covers the entire background */
+          width: 100%;
+          height: 100%;
+      }
+
+      /* Content Styling */
+      h1 {
+          text-align: center;
+          font-size: 3em;
+          font-weight: bold;
+          margin-bottom: 30px;
+          color: maroon;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Event details styling */
+      .event-details {
+          background-color: pink;
+          padding: 30px;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          margin-bottom: 30px;
+      }
+
+      .event-details p {
+          font-size: 1.2em;
+          margin-bottom: 20px;
+          text-align: justify;
+      }
+
+      /* Gallery Section */
+      .gallery {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 15px;
+          margin-top: 20px;
+      }
+
+      .gallery img {
+          width: 300px;
+          height: 200px;
+          object-fit: cover;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          transition: transform 0.3s ease-in-out;
+      }
+
+      .gallery img:hover {
+          transform: scale(1.1);
+      }
+
+      /* Button Styling */
+      button {
+          display: block;
+          margin: 20px auto;
+          padding: 12px 30px;
+          background-color: #007bff;
+          color: white;
+          border: none;
+          font-size: 1.1em;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s;
+      }
+
+      button:hover {
+          background-color: #0056b3;
+      }
+
+      /* Responsive design */
+      @media (max-width: 768px) {
+          .gallery img {
+              width: 45%;
+          }
+      }
+
+      @media (max-width: 480px) {
+          .gallery img {
+              width: 100%;
+          }
+      }
+    </style>
+</head>
+<body>
+
+    <!-- Background Video -->
+    <div class="background-video">
+        <video autoplay muted loop id="video-background">
+            <source src="{% static 'images/video/video10.mp4' %}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <h1>DHANAK</h1>
+
+    <div class="event-details">
+        <p>The annual two-day cultural extravaganza – Dhanak has a unique flavor and style that 
+            makes it a much-expected event on RCET Campus. It’s a confluence of ideas, a perfect 
+            blend of the arts, the skills, and the passion to perform. Dance, light music, classical 
+            music, fashion show, literary debates, craft and many other events are organized, and leading 
+            celebrities are invited to judge the events. There’s competition and a spirit of camaraderie too, 
+            as students from various streams come together to participate, compete and win prizes. The Arts fest 
+            of RCET “DHANAK 2K18” was celebrated on 5, 6 March 2018 in the campus. The students showcased their 
+            creativity and innovations to a great extent. There were five stages inside the campus set at the 
+            Courtyard, Volleyball Court, parking lot, main seminar hall, and Room No.410. All the stages were active 
+            during the two days.
+        </p>
+    </div>
+
+    <!-- Gallery Section -->
+    <div class="gallery">
+        <img src="{% static 'images/e51.jpg' %}" alt="Image 1">
+        <img src="{% static 'images/e52.jpg' %}" alt="Image 2">
+        <img src="{% static 'images/e53.jpg' %}" alt="Image 3">
+        <img src="{% static 'images/e54.jpg' %}" alt="Image 4">
+    </div>
+
+</body>
+</html>
